@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SearchForm from './SearchForm'
+import GeocodeResult from './GeocodeResult'
 
 export default class App extends Component {
   constructor(props) {
@@ -19,6 +20,11 @@ export default class App extends Component {
         <SearchForm onSubmit={
           place => this.handlePlaceSubmit(place)
         } />
+        <GeocodeResult
+          address={this.state.address}
+          lat={this.state.lat}
+          lng={this.state.lng}
+        />
       </div>
     )
   }
