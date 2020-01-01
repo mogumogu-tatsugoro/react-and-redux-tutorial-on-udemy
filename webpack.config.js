@@ -38,6 +38,38 @@ module.exports = [
     ],
   },
   {
+    entry: [
+      './src/index.js',
+    ],
+    node: {
+      fs: 'empty'
+    },
+    output: {
+      path: publidDir,
+      publicPath: '/',
+      filename: 'index.js',
+    },
+    module: {
+      rules: [{
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015'],
+        },
+      }],
+    },
+    resolve: {
+      extensions: ['.js'],
+    },
+    devServer: {
+      historyApiFallback: true,
+      contentBase: publidDir,
+    },
+    plugins: [
+      new Dotenv(),
+    ],
+  },
+  {
     entry: {
       style: './stylesheets/index.scss',
     },
