@@ -2,11 +2,16 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const publidDir = path.join(__dirname, '/public');
+const Dotenv = require('dotenv-webpack');
+
 module.exports = [
   {
     entry: [
       './src/index.jsx',
     ],
+    node: {
+      fs: 'empty'
+    },
     output: {
       path: publidDir,
       publicPath: '/',
@@ -28,6 +33,9 @@ module.exports = [
       historyApiFallback: true,
       contentBase: publidDir,
     },
+    plugins: [
+      new Dotenv(),
+    ],
   },
   {
     entry: {
